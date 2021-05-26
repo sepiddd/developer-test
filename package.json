@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "clsx": "latest",
+    "lokijs": "^1.5.12",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
@@ -12,13 +13,18 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/lokijs": "^1.5.4",
     "@types/next": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "jest": "^27.0.1",
+    "next-test-api-route-handler": "^1.2.24",
     "typescript": "latest"
   }
 }
