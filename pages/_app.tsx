@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -16,7 +17,13 @@ export default function MyApp(props: AppProps) {
     }
   }, []);
 
+  const queryClientRef = React.useRef<QueryClient>()
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient()
+  }
+
   return (
+    <QueryClientProvider client={queryClientRef.current}>
     <React.Fragment>
       <Head>
         <title>My page</title>
@@ -28,5 +35,6 @@ export default function MyApp(props: AppProps) {
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>
+    </QueryClientProvider>
   );
 }
