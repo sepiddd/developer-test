@@ -1,10 +1,13 @@
 import Loki from "lokijs";
 
 export type Review = {
-  // name of the restaurant
+  // Name of the restaurant
   name: string;
+  // Text of the actual review
   text: string;
+  // Picture url
   url?: string;
+  // Rating of the restaurant
   stars: 1 | 2 | 3 | 4 | 5;
 };
 
