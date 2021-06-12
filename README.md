@@ -12,13 +12,12 @@
 
 ### libraries
 
-- `mui` - [https://material-ui.com/](the famous react ui framework)
-- `nextjs` - [https://nextjs.org/docs/getting-started](React front-end development web framework)
-
+- `mui` - [the famous react ui framework](https://material-ui.com)
+- `nextjs` - [React front-end development web framework](https://nextjs.org/docs/getting-started)
 
 ## How to use
 
-## The idea behind the example
+### The idea behind the example
 
 [Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.
 
@@ -43,4 +42,6 @@ Our well-paying customer, Charles Duchemin, a well-known gourmet and the publish
 
 ### Where to start
 
+- start your app and check out what is already there
 - we already stubbed the api methods needed
+- visit [review](http://localhost:3000/reviews) page, which just shows the name of the first restaurant
