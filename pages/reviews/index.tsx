@@ -42,8 +42,6 @@ export default function Reviews(props: any) {
   const { data, isLoading } = useReviews();
   const classes = useStyles();
 
-  console.log("props", props);
-
   if (isLoading)
     return (
       <div className={classes.loadingBox}>
