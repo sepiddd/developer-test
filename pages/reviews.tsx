@@ -54,7 +54,7 @@ export default function Reviews() {
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>
-                  <TableCell align="right">Description</TableCell>
+                  <TableCell align="left">Description</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -62,9 +62,11 @@ export default function Reviews() {
                 {data?.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell component="th" scope="row">
-                      {row.name}
+                      <Typography variant="h6" component="h6" gutterBottom>
+                        {row.name}
+                      </Typography>
                     </TableCell>
-                    <TableCell align="right">{row.text}</TableCell>
+                    <TableCell align="left">{row.text}</TableCell>
                     <TableCell align="right">
                       <Button variant="contained" color="primary">
                         Edit
