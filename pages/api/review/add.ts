@@ -4,7 +4,7 @@ import database from "../../../src/utils/database";
 export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const insert = database.review.insert({
-      ...JSON.parse(req.body),
+      ...req.body,
     });
     return res.status(200).json(insert);
   }

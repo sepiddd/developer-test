@@ -31,14 +31,13 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "space-between",
   },
-
   title: { marginBottom: 50 },
   table: {
     minWidth: 500,
   },
 });
 
-export default function Reviews(props: any) {
+export default function Reviews() {
   const { data, isLoading } = useReviews();
   const classes = useStyles();
 
@@ -82,7 +81,8 @@ export default function Reviews(props: any) {
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>
-                  <TableCell align="left">Description</TableCell>
+                  <TableCell align="left">Comment</TableCell>
+                  <TableCell align="left">Stars</TableCell>
                   <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -95,6 +95,7 @@ export default function Reviews(props: any) {
                       </Typography>
                     </TableCell>
                     <TableCell align="left">{row.text}</TableCell>
+                    <TableCell align="left">{row.stars}</TableCell>
                     <TableCell
                       align="right"
                       // className={classes.actionsWrap}
