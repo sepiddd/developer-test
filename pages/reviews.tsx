@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
+  header: { marginBottom: 50 },
   table: {
     minWidth: 500,
   },
@@ -36,7 +37,7 @@ export default function Reviews() {
     );
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box my={4}>
         <Grid
           container
@@ -45,7 +46,12 @@ export default function Reviews() {
           alignItems="stretch"
           spacing={2}
         >
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography
+            className={classes.header}
+            variant="h4"
+            component="h1"
+            gutterBottom
+          >
             J'aime beaucoup la nourriture
           </Typography>
 
