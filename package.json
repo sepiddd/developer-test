@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
+    "axios": "^0.21.1",
     "clsx": "latest",
     "lokijs": "^1.5.12",
     "next": "latest",
