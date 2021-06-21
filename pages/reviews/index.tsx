@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { dehydrate } from "react-query/hydration";
 import { QueryClient } from "react-query";
-import { fetchReviews, useReviews } from "../hooks/reviews";
+import { fetchReviews, useReviews } from "../../hooks/reviews";
 import {
   Box,
   Button,
@@ -17,23 +17,40 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import Link from "next/link";
 
 const useStyles = makeStyles({
-  header: { marginBottom: 50 },
+  loadingBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  title: { marginBottom: 50 },
   table: {
     minWidth: 500,
   },
 });
 
-export default function Reviews() {
+export default function Reviews(props: any) {
   const { data, isLoading } = useReviews();
   const classes = useStyles();
 
+  console.log("props", props);
+
   if (isLoading)
     return (
-      <Typography variant="h4" component="h1" gutterBottom>
-        Attends un moment !
-      </Typography>
+      <div className={classes.loadingBox}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Attends un moment !
+        </Typography>
+      </div>
     );
 
   return (
@@ -46,14 +63,21 @@ export default function Reviews() {
           alignItems="stretch"
           spacing={2}
         >
-          <Typography
-            className={classes.header}
-            variant="h4"
-            component="h1"
-            gutterBottom
-          >
-            J'aime beaucoup la nourriture
-          </Typography>
+          <div className={classes.header}>
+            <Typography
+              className={classes.title}
+              variant="h4"
+              component="h1"
+              gutterBottom
+            >
+              J'aime beaucoup la nourriture
+            </Typography>
+            <Link href="/reviews/create" passHref>
+              <Button variant="contained" color="primary">
+                Add Review
+              </Button>
+            </Link>
+          </div>
 
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -73,10 +97,16 @@ export default function Reviews() {
                       </Typography>
                     </TableCell>
                     <TableCell align="left">{row.text}</TableCell>
-                    <TableCell align="right">
-                      <Button variant="contained" color="primary">
+                    <TableCell
+                      align="right"
+                      // className={classes.actionsWrap}
+                    >
+                      <Button variant="outlined" color="primary">
                         Edit
                       </Button>
+                      {/* <Button variant="text" color="secondary">
+                        Delete
+                      </Button> */}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -89,13 +119,13 @@ export default function Reviews() {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(["review"], async () => fetchReviews());
 
   return {
     props: {
-      reviews: dehydrate(queryClient),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }
