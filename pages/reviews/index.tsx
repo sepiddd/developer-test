@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@material-ui/core";
 import Link from "next/link";
+import { Review } from "../../src/utils/database";
 
 const useStyles = makeStyles({
   loadingBox: {
@@ -87,7 +88,7 @@ export default function Reviews() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data?.map((row, index) => (
+                {(data as Review[])?.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell component="th" scope="row">
                       <Typography variant="h6" component="h6" gutterBottom>

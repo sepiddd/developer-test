@@ -1,16 +1,16 @@
-import { useQuery } from 'react-query';
-import { Review } from '../src/utils/database';
+import { useQuery } from "react-query";
+import { Review } from "../src/utils/database";
 
-export async function fetchReviews(): Promise<Review[]> {
-    const response = await fetch('http://localhost:3000/api/review');
+export async function fetchReviews(id?: string): Promise<Review[] | Review> {
+  const response = await fetch(`/api/review${id ? `/${id}` : ""}`);
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    return response.json();
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
   }
 
-export function useReviews() {
-  return useQuery(['review'], () => fetchReviews())
+  return response.json();
+}
+
+export function useReviews(id?: string) {
+  return useQuery(["review", id], () => fetchReviews(id));
 }

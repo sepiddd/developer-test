@@ -17,7 +17,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "PUT") {
     const update = database.review.update({
       ...review,
-      ...JSON.parse(req.body),
+      ...req.body,
     });
     return res.status(200).json(update);
   }
